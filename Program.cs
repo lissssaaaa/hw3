@@ -1,34 +1,40 @@
-﻿//Задача 10
-Console.Write("Введи трёхзначное число: ");
-int threeDigitNumber = Convert.ToInt32(Console.ReadLine());
-string stringNumber = Convert.ToString(threeDigitNumber);
-Console.WriteLine("вторая цифра этого числа -> "+stringNumber[1]);
+﻿//Задача 19
+Console.WriteLine("Введите число");
+string sum = Console.ReadLine();
+int len = sum.Length;
 
-//Задача 13
-int n = Random().Next(1, 100000);
-int b = ( n % 1000)/100;
-Console.WriteLine(n);
-if ( b > 0)
+if (len == 5)
 {
-    Console.WriteLine(b);
+    if (sum[0] == sum[4] && sum[1] == sum[3])
+    {
+        Console.WriteLine($"{sum} - Палиндром");
+    }
+    else
+    {
+        Console.WriteLine($"{sum} - не палиндром");
+    }
 }
 else
 {
-    Console.WriteLine("Нет числа");
+    Console.WriteLine($"Ошибка: {sum} - не пятизначное число");
 }
 
-//Задача 15
-int den = new Random().Next(1, 8);
+//Задача 21
+int[] mas = {3, 6, 8, 2, 1, -7};
+int[] mas = {7, -5, 0, 1, -1, 9};
+
+double masR = Math.Sqrt(Math.Pow(mas[0]-mas[2]-mas[4], 3) + Math.Pow(mas[1]-mas[3]-mas[5], 3));
+Console.WriteLine($"{masR:f2}");
+
+//Задача 23
 Console.WriteLine("Введи число");
-int den = int.Parse(Console.ReadLine()!);
-if (den == 1){Console.WriteLine("Пн");}
-if (den == 2){Console.WriteLine("Вт");}
-if (den == 3){Console.WriteLine("Ср");}
-if (den == 4){Console.WriteLine("Чт");}
-if (den == 5){Console.WriteLine("Пт");}
-if (den == 6){Console.WriteLine("Сб");}
-if (den == 7){Console.WriteLine("Вс");}
-if (den == 8){Console.WriteLine("откисаем");}
-else{
-    Console.WriteLine("Проверче число от 1 до 7");
+int num = int.Parse(Console.ReadLine()!);
+if (num < 0)
+{
+    Console.WriteLine("Число отрицательно преобразовано в положительное");
+    num = -num;
+}
+for (int i = 1; i <= num; i++)
+{
+    Console.WriteLine($"{Math.Pow(i, 3)}");
 }
