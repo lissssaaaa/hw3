@@ -1,40 +1,39 @@
-﻿//Задача 19
-Console.WriteLine("Введите число");
-string sum = Console.ReadLine();
-int len = sum.Length;
+﻿//Задача 25
+Console.WriteLine("Введите число А: ");
+int a = int.Parse(Console.ReadLine()!);
+Console.WriteLine("Введите число Б: ");
+int b = int.Parse(Console.ReadLine()!);
 
-if (len == 5)
+int count = a;
+for (int i = 1; i < b; i++)
 {
-    if (sum[0] == sum[4] && sum[1] == sum[3])
-    {
-        Console.WriteLine($"{sum} - Палиндром");
-    }
-    else
-    {
-        Console.WriteLine($"{sum} - не палиндром");
-    }
+    count = count * a;
 }
-else
-{
-    Console.WriteLine($"Ошибка: {sum} - не пятизначное число");
-}
+Console.WriteLine("Ответ А в степени Б равен: " +count);
 
-//Задача 21
-int[] mas = {3, 6, 8, 2, 1, -7};
-int[] mas = {7, -5, 0, 1, -1, 9};
-
-double masR = Math.Sqrt(Math.Pow(mas[0]-mas[2]-mas[4], 3) + Math.Pow(mas[1]-mas[3]-mas[5], 3));
-Console.WriteLine($"{masR:f2}");
-
-//Задача 23
-Console.WriteLine("Введи число");
+//Задача 27
+Console.WriteLine("Введите число: ");
 int num = int.Parse(Console.ReadLine()!);
-if (num < 0)
+int GetSize(int number)
 {
-    Console.WriteLine("Число отрицательно преобразовано в положительное");
-    num = -num;
+    int i = 10;
+    int size = 1;
+    while(true)
+    {
+        if(number / i !=0)
+        {
+            size += 1;
+        }
+        else
+        {
+            break;
+        }
+        i *= 10;
+    }
+    return(size);
 }
-for (int i = 1; i <= num; i++)
-{
-    Console.WriteLine($"{Math.Pow(i, 3)}");
-}
+Console.WriteLine(GetSize(num));
+
+//Задача 29
+int[] array = GetArray(8);
+Console.WriteLine($"[{String.Join(", ", array) }]");
