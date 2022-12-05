@@ -1,90 +1,47 @@
-﻿//Задача 34
-int size = ReadInt("Введите размерность массива: ");
-int [] numbers = new int[size];
+﻿//Задача 41
+Console.WriteLine("Введите элементы");
+int[] arr = Array.ConvertAll(Console.ReadLine().Split(), int.Parse);
+int count = 0;
 
-FillArrayRandomNumbers(numbers);
-PrintArray(numbers);
-int result = 0;
-
-for (int i = 0; i < numbers.Length; i++)
+for (int i = 0; i < arr.Length; i++)
 {
-    if (numbers[i] % 2 == 0)
+    if (arr[i] > 0)
     {
-        result++;
+        count++;
     }
 }
-if (result % 10 == 1)
-{
-    Console.WriteLine($"В массиве {result} четное число");
-}
-if (result % 10 == 2 || result % 10 == 3 || result % 10 == 4)
-{
-    Console.WriteLine($"В массиве {result} четных чисел");
-}
-else
-Console.WriteLine($"В массиве {result} четных чисел");
+Console.WriteLine($"Количество элементов > 0");
 
-//Задача 36
-int size = ReadInt("Введите размерность массива: ");
-int min = ReadInt("Введите минимальное число массива: ");
-int max = ReadInt("Введите максимальное число массива: ");
-int [] numbers = new int[size];
+//Задача 43
+Console.WriteLine($"Ввод массива [ {String.Join(", ", array)} ]");
+Console.WriteLine($"Фильтрация по возрастанию [ {String.Join(", ", SortArray(array))} ]");
 
-FillArrayRandomNumbers(numbers);
-PrintArray(numbers);
-int result = 0;
-
-for (int i = 0; i < numbers.Length; i++)
+int[] SortArray(int[] array)
 {
-    if(i % 2 != 0)
+    int tempNum = 0;
+    bool flag = true;
+    while (flag)
     {
-        result += numbers[i];
+        flag = false;
+        for (int i = 0; i < array.Length -1; i++)
+        {
+            if (array[i] > array[i + 1])
+            {
+                tempNum = array[i];
+                array[i] = array[i + 1];
+                array[i + 1] = tempNum;
+                flag = true;
+            }
+        }
     }
+    return array;
 }
-Console.WriteLine($"Сумма элементов нечетных позиций = {result}");
-
-//Задача 37
-Console.Write("Введите размер массива: ");
-int size = int.Parse(Console.ReadLine()!);
-
-int[] PairInArray(int[] array)
+int[] GetArrayRandom(int size, int minValue, int maxValue)
 {
-    int 1 = array.Length, size = 1/2;
-    int[]array2;
-    if (1 % 2 == 0)
-    array2 = new int[size];
-    else
+    int[] array = new int[size];
+    for (int i = 0; i < size; i++)
     {
-        array2 = new int[(size +1)];
-        array2[size] = array[size];
+        array[i] = new Random().Next(minValue, maxValue + 1);
     }
-    for (int i = 0; i < size; i++, 1--)
-    array2[i] = array[1-1];
-    return array2;
+    returnt array;
 }
-
-//Задача 38
-int size = ReadInt("Введите размер массива: ");
-int min = -10; //ReadInt("Введите минимальное число массива:");
-int max = 10; //ReadInt("Введите максимальное число массива: ");
-int [] numbers = new int[size];
-
-FillArrayRandomNumbers(numbers);
-PrintArray(numbers);
-
-int maxFillarray = numbers[0];
-int minFillarray = numbers[0];
-
-for (int i = 0; i < numbers.Length; i++)
-{
-    if (numbers[i] > maxFillarray)
-    {
-        maxFillarray = numbers[i];
-    }
-    if (numbers[i] < minFillarray)
-    {
-        minFillarray = numbers[i];
-    }
-}
-Console.WriteLine($"Разница между максимальным и минимальным числом = {maxFillarra - minFillarray}");
-
