@@ -1,47 +1,94 @@
-﻿//Задача 41
-Console.WriteLine("Введите элементы");
-int[] arr = Array.ConvertAll(Console.ReadLine().Split(), int.Parse);
-int count = 0;
+﻿//Задача 47
+Console.WriteLine("Введите кол-во строк");
+int linesVal = Convert.ToInt32(Console.ReadLine());
+Console.WriteLine("Введите кол-во столбцов");
+int columsVal = Convert.ToInt32(Console.ReadLine());
+double[,] num = new double[linesVal, columsVal];
+FillArrayRandomNumbers(num);
+PrintArray(num);
 
-for (int i = 0; i < arr.Length; i++)
+void FillArrayRandomNumbers(double[,] array) 
 {
-    if (arr[i] > 0)
+    for (int i = 0; i < array.GetLength(0); i++)
     {
-        count++;
-    }
-}
-Console.WriteLine($"Количество элементов > 0");
-
-//Задача 43
-Console.WriteLine($"Ввод массива [ {String.Join(", ", array)} ]");
-Console.WriteLine($"Фильтрация по возрастанию [ {String.Join(", ", SortArray(array))} ]");
-
-int[] SortArray(int[] array)
-{
-    int tempNum = 0;
-    bool flag = true;
-    while (flag)
-    {
-        flag = false;
-        for (int i = 0; i < array.Length -1; i++)
+        for (int b = 0; b < array.GetLength(1); b++)
         {
-            if (array[i] > array[i + 1])
-            {
-                tempNum = array[i];
-                array[i] = array[i + 1];
-                array[i + 1] = tempNum;
-                flag = true;
-            }
+            array[i, b] = Convert.ToDouble(new Random().Next(-100, 100)) / 10;
         }
     }
-    return array;
 }
-int[] GetArrayRandom(int size, int minValue, int maxValue)
+void PrintArray(double[,] array)
 {
-    int[] array = new int[size];
-    for (int i = 0; i < size; i++)
+    for (int i = 0; i < array.GetLength(0); i++)
     {
-        array[i] = new Random().Next(minValue, maxValue + 1);
+        Console.WriteLine("[ ");
+        for (int b = 0; b < array.GetLength(1); b++)
+        {
+            Console.WriteLine(array[i, b] + " ");
+        }
+        Console.WriteLine("] ");
+        Console.WriteLine("");
     }
-    returnt array;
 }
+
+//Задача 50
+int rows = ReadInt("Введите индекс строки");
+int colums = ReadInt("Введите индекс столца");
+int[,] num = new int[7, 9];
+FillArray2D(num);
+PrintArray2D(num);
+
+if (rows < num.GetLength(0) && colums < num.GetLength(1)) Console.WriteLine(num[rows, colums]);
+else Console.WriteLine($"{rows}{colums} - этого числа нет в массиве");
+
+void FillArray2D(int[,] array)
+{
+    for (int i = 0; i < array.GetLength(0); i++)
+    {
+        for (int b = 0; b < array.GetLength(1); b++)
+        {
+            array[i, b] = new Random().Next(1, 10);
+        }
+    }
+}
+void PrintArray2D(int[,] array)
+{
+    for (int i = 0; i < array.GetLength(0); i++)
+    {
+        for (int b = 0; b < array.GetLength(1); b++)
+        {
+            Console.WriteLine(array[i, b] + " ");
+        }
+        Console.WriteLine();
+    }
+    Console.WriteLine();
+}
+int ReadInt(string message)
+{
+    Console.WriteLine(message);
+return ConsoleCancelEventArgs.ToInt32(Console.ReadLine());
+}
+
+//Задача 52
+Random = new Random();
+int[,] arr = new int[random.Next(1, 9), random.Next(1, 9)];
+for (int i = 0; i < arr.GetLength(0); i++)
+{
+    for (int b = 0; b < Array.GetLength(1); b++)
+    {
+        arr[i, b] = Random.Next(1, 9);
+        Console.WriteLine(arr[i, b] + " ");
+    }
+    Console.WriteLine();
+}
+Console.WriteLine(arr.GetLength(0));
+for (int b = 0; b < Array.GetLength(1); b++)
+{
+    double sum = 0;
+    for (int i = 0; i < arr.GetLength(0); i++)
+    {
+        sum += arr[i, b];
+    }
+    Console.WriteLine($"{sum / arr.GetLength(0)}");
+}
+Console.ReadLine();
