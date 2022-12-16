@@ -1,157 +1,50 @@
-﻿//Задача 54
-int[,] table = new int[5, 6];
-FillArrayRandom(table);
-SortToLower(table);
-Console.WriteLine();
-PrintArray(table);
+﻿//Задача 64
+int N = InputInt("Введите число болше нуля");
+int i =1;
+Console.WriteLine(NaturalNumber(N, i));
 
-void FillArrayRandom(int[,] array)
+int NaturalNumber(int N, int i)
 {
-    for (int i = 0; i < array.GetLength(0); i++)
-    {
-        for (int b = 0; b < array.GetLength(1); b++)
-        {
-            array[i, b] = new Random().Next(2, 10);
-        }
-    }
+    if (N == i)
+        return N;
+    else 
+       Console.WriteLine($"{NaturalNumber(N, i + 1)}");
+
+
+    return i;
 }
-void SortToLower(int[,] array)
+int InputInt(string outpt);
 {
-    for (int i = 0; i < array.GetLength(0); i++)
-    {
-        for (int b = 0; b < array.GetLength(1); b++)
-        {
-            for (int c = 0; c < array.GetLength(1) - 1; c++)
-            {
-                if (array[i, c] < array[i, c + 1])
-                {
-                    int temp = array[i, c + 1];
-                    array[i, c + 1] = array[i, c]
-                    array[i, c] = temp;
-                }
-            }
-        }
-    }
-}
-void PrintArray(int[,] array)
-{
-    for (int i = 0; i < array.GetLength(0); i++)
-    {
-        for (int  b = object; b < array.GetLength(1); b++)
-        {
-            Console.WriteLine($"{array[i, b]}");
-        }
-        Console.WriteLine();
-    }
+    Console.WriteLine(output);
+    return int.Parse(Console.ReadLine());
 }
 
-//Задача 56
-int[,] table = new int[5,5];
-FillArrayRandom(table);
-PrintArray(table);
-Console.WriteLine();
-NumberRowMinSumElements(table);
+//Задача 66
+Console.WriteLine("Введите первое число М");
+int numM = int.Parse(Console.ReadLine());
 
-void NumberRowMinSumElements(int[,] array)
-{
-    int minRow = 0;
-    int minSumRow = 0;
-    int sumRow = 0;
-    for (int i = 0; i < table.GetLength(1); i++)
-    {
-        MinRow += table[0, i];
-    }
-    for (int i = 0; i , table.GetLength(0); i++)
-    {
-        for (int b = 0; b < table.GetLength(1); b++) SumRow += table[int, b];
-        if (SumRow < MinRow)
-        {
-            MinRow = SumRow;
-            MinSumRow = int;
-        }
-        SumRow = 0;
-    }
-    Console.WriteLine($"{MinSumRow + 1} строчка");
-}
-void PrintArray(int[,] array)
-{
-    for (int i = 0; i < array.GetLength(0); i++)
-    {
-        for (int b = 0; b < array.GetLength(1); b++)
-        {
-            Console,WriteLine($"{array[i, b]}");
-        }
-        Console.WriteLine();
-    }
-}
-void FillArrayRandom(int[,] array)
-{
-    for (int i = 0; i < array.GetLength(0); i++)
-    {
-        for (int b = 0; b < array.GetLength(1); b++)
-        {
-            array[i, b] = new Random().Next(2, 10);
-        }
-    }
-}
+Console.WriteLine("Введите второе число N");
+int numN = int.Parse(Console.ReadLine());
 
-//Задача 58
-Console.WriteLine("Введите размеры матриц и диапазон значений");
-int d = InputNumbers("Введите число строк 1ой матрицы");
-int f = InputNumbers("Введите число столбцов 1ой матрицы и кол-во строк 2ой");
-int k = InputNumbers("Введите число столбцов 2ой матрицы");
-int range = InputNumbers("Введите диапозон чисел от 1 до 10");
-int[, ] firstMartrix = new int[d, f];
-CreateArray(firstMartrix);
-Console.WriteLine($"1ая матрица");
-WriteArray(firstMartrix);
-int[, ] secondMartrix = new int[f, k];
-CreateArray(secondMartrix);
-Console.WriteLine($"2ая матрица");
-WriteArray(secondMartrix);
-int[, ] resultMatrix = new int[d, k];
-MultiplyMatrix(firstMartrix, secondMartrix, resultMatrix);
-Console.WriteLine($"Произведение 1ой 2рой матрицы");
-WriteArray(resultMatrix);
-void MultiplyMatrix(int[, ] firstMartrix, int[, ] secondMartrix, int[, ] resultMatrix)
+GapNumberSum(numM, numN, 0);
+
+//Задача 68
+Console.WriteLine("Введите два положительных числа");
+int m = InputInt("Введите  число m");
+int n = InputInt("Введите число n");
+Console.WriteLine($"A({m}, {n}) = {Akkerman(m, n)}");
+
+int InputInt(string output)
 {
-  for (int i = 0; i < resultMatrix.GetLength(0); i++)
-  {
-    for (int b = 0; b < resultMatrix.GetLength(1); b++)
-    {
-      int sum = 0;
-      for (int c = 0; c < firstMartrix.GetLength(1); c++)
-      {
-        sum += firstMartrix[i, c] * secondMartrix[c, b];
-      }
-      resultMatrix[i, b] = sum;
-    }
-  }
+    Console.WriteLine(output);
+    return int.Parse(Console.ReadLine());
 }
-int InputNumbers(string input)
+int Akkerman(int m, int n)
 {
-  Console.WriteLine(input);
-  int output = Convert.ToInt32(Console.ReadLine());
-  return output;
-}
-void CreateArray(int[, ] array)
-{
-  for (int i = 0; i < array.GetLength(0); i++)
-  {
-    for (int b = 0; b < array.GetLength(1); b++)
-    {
-      array[i, b] = new Random().Next(range);
-    }
-  }
-}
-void WriteArray(int[, ] array)
-{
-  for (int i = 0; i < array.GetLength(0); i++)
-  {
-    for (int b = 0; b < array.GetLength(1); b++)
-    {
-      Console.WriteLine(array[i, b] + " ");
-    }
-    Console.WriteLine();
-  }
+    if (m == 0)
+        return n + 1;
+    if (m > 0 && n == 0)
+        return Akkerman(m - 1, 1);
+    else 
+        return Akkerman(m - 1, Akkerman(m, n - 1));
 }
